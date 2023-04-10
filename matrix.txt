@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct {
+    int rows;
+    int cols;
+    double data[2][2];
+} Matrix;
+
+Matrix MatrixAddition(Matrix a, Matrix b){
+    Matrix c;
+    c.rows = a.rows;
+    c.cols = a.cols;
+
+    for(int i = 0; i < a.rows; i++){
+        for (int j = 0; j < b.cols; j++){ // заменили b.rows на b.cols
+            c.data[i][j] = a.data[i][j] + b.data[i][j];
+        }
+    }
+    return c;
+}
+
+int main(){
+    int i,j;
+    Matrix a;
+    Matrix b;
+
+    printf("Enter values for matrix A: ");
+    for (i = 0; i < 2; i++){
+        for (j = 0; j < 2; j++){
+            scanf("%lf", &a.data[i][j]);
+        }
+    }
+
+    printf("Enter values for matrix B: ");
+    for (i = 0; i < 2; i++){
+        for (j = 0; j < 2; j++){
+            scanf("%lf", &b.data[i][j]);
+        }
+    }
+
+    Matrix c = MatrixAddition(a,b);
+    for(int i = 0; i < c.rows; i++){
+        for (int j = 0; j < c.cols; j++){
+            printf("%lf ", c.data[i][j]); // добавили пробел между элементами
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+Matrix MatrixAddition(Matrix a, Matrix b);
